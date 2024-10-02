@@ -1,0 +1,38 @@
+<c-row>
+    <c-col xs>
+      <c-card class="mb-4">
+        <c-card-header>Manage Sales Tax
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <!-- <button (click)="toggleLiveDemo()" cButton size="sm" color="primary" (click)="clickAddMember()" class="me-md-2">Add User</button> -->
+          </div>
+        </c-card-header>
+  
+        <c-card-body>
+          <form [gutter]="3" cForm cRow [formGroup]="settingsForm">
+            <c-col xs="auto">
+              <label sizing="sm" cLabel class="visually-hidden" for="staticEmail">
+                Set Sales Tax
+              </label>
+              <input sizing="sm" [plaintext]="true" cFormControl id="staticEmail" readonly type="text" value="Sales Tax Value" />
+            </c-col>
+            <c-col xs="auto">
+              <label sizing="sm" cLabel class="visually-hidden" for="saleTax"></label>
+              <div class="input-group input-group-sm">
+                <input name="saleTax" sizing="sm" min="0" type="number" cFormControl id="saleTax" formControlName="saleTax" class="form-control" />
+                <span class="input-group-text">%</span>
+              </div>
+            </c-col>
+            <c-col xs="auto">
+              <button cButton (click)="updateSettings()" type="submit" size="sm">
+                Save
+              </button>
+            </c-col>
+          </form>
+          
+        
+  
+        </c-card-body>
+      </c-card>
+  
+    </c-col>
+  </c-row>

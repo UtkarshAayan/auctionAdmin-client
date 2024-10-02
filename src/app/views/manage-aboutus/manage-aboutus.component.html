@@ -1,0 +1,80 @@
+<div class="container">
+    <c-row>
+      <c-col xs>
+        <c-card class="mb-4">
+          <c-card-header>
+            <h5 class="card-title mb-0">Create Aboutus</h5>
+          </c-card-header>
+          <c-card-body>
+            <form [formGroup]="sellForm" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" id="title" class="form-control" formControlName="title">
+              </div>
+              <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea id="content" class="form-control" formControlName="content"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+  
+            <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
+            <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+
+            
+          </c-card-body>
+        </c-card>
+  
+        <div class="container mt-5">
+          <h2>Content</h2>
+          <div >
+            <div *ngFor="let content of aboutusContents" class="card mb-3">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <h5>{{ content.title }}</h5>
+                <div>
+                  <button class="btn btn-info btn-sm me-2" (click)="editContent(content)">Edit</button>
+                  <button class="btn btn-danger btn-sm" (click)="deleteContent(content._id)">
+                    <svg cIcon name="cil-trash" size="sm"></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <p>{{ content.content }}</p>
+              </div>
+           
+            </div>
+          </div>
+          <ng-template #noContent>
+            <div *ngIf="errorMessage; else noError">
+              <div class="alert alert-danger">{{ errorMessage }}</div>
+            </div>
+            <ng-template #noError>
+              <div class="alert alert-info">No how-to-buy contents available.</div>
+            </ng-template>
+          </ng-template>
+        </div>
+  
+        <!-- Edit Form Modal -->
+        <c-modal size="lg" [visible]="selectedContent" (close)="selectedContent = null">
+          <c-modal-header>
+            <h5 class="modal-title">Edit How to Buy Content</h5>
+            <button type="button" class="btn-close" (click)="selectedContent = null"></button>
+          </c-modal-header>
+          <c-modal-body>
+            <form [formGroup]="sellForm" (ngSubmit)="updateContent()">
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <textarea id="title" class="form-control" formControlName="title"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea id="content" class="form-control" formControlName="content"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+          </c-modal-body>
+        </c-modal>
+      </c-col>
+    </c-row>
+  </div>
+  

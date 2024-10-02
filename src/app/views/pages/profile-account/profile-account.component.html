@@ -1,0 +1,91 @@
+
+<c-row>
+  <c-col xs>
+      <c-card class="mb-4">
+          <c-card-header>
+              <div class="d-flex align-items-center justify-content-between">
+                  Profile
+                
+              </div>
+          </c-card-header>
+          <c-card-body>
+              <div class="mx-3 d-flex justify-content-center align-items-center mb-3">
+              
+                  <div style="margin-right: 10px;" *ngIf="editArray">
+                       <strong>{{editArray.username}}</strong>
+                  </div>
+    
+              </div>
+              <div class="container-fluid">
+                  <div class="row justify-content-center">
+                      <div class="col-md-6">
+                          <div class="card border-0">
+                              <div class="card-body">
+                                  <form [formGroup]="profileForm" >
+                                    
+                                      <div class="form-group row mb-3">
+                                          <label for="name" class="col-sm-3 col-form-label">Name:</label>
+                                          <div class="col-sm-9">
+                                              <input formControlName="name" type="text" class="form-control" id="name" name="name"
+                                                  required>
+                                          </div>
+                                      </div>
+                                      <div class="form-group row mb-3">
+                                        <label for="username" class="col-sm-3 col-form-label">Username:</label>
+                                        <div class="col-sm-9">
+                                            <input formControlName="username" type="text" class="form-control" id="username" name="username"
+                                                required>
+                                        </div>
+                                    </div>
+                                      <div class="form-group row mb-3">
+                                          <label for="email" class="col-sm-3 col-form-label">Email:</label>
+                                          <div class="col-sm-9">
+                                              <input formControlName="email" type="email" class="form-control" id="email" name="email"
+                                                  required>
+                                          </div>
+                                      </div>
+
+                                   
+                                          
+                                      <div class="form-group row mb-3">
+                                          <label for="password" class="col-sm-3 col-form-label">Password:</label>
+                                          <div class="col-sm-9">
+                                              <input formControlName="password" #passwordInput type="password" class="form-control" id="password"
+                                                  name="password" required>
+                                              <input type="text" id="changePassword" style="display: none;">
+                                          </div>
+                                      </div> 
+                                      <div class="form-group row">
+                                          <div class="col-sm-9 offset-sm-3">
+                                              <button (click)="updateUser(editData.data._id)" class="btn btn-dark" style="margin-right: 1rem;"
+                                                 >Update</button>
+                                              <button color="dark" (click)="toggleLiveDemo()" cButton>Logout</button>
+                                          </div>
+                                      </div>
+
+                                      <c-modal id="liveDemoModal" [visible]="visible"
+                                          (visibleChange)="handleLiveDemoChange($event)">
+                                          <c-modal-header>
+                                              <h5 cModalTitle>Logout</h5>
+                                              <button (click)="toggleLiveDemo()" cButtonClose></button>
+                                          </c-modal-header>
+                                          <c-modal-body>Clicking on Logout you will be logged out of the portal. Do
+                                              you want
+                                              to logout?</c-modal-body>
+                                          <c-modal-footer>
+                                              <button (click)="toggleLiveDemo()" cButton color="secondary">
+                                                  No
+                                              </button>
+                                              <button (click)="logout()" cButton color="primary">Yes</button>
+                                          </c-modal-footer>
+                                      </c-modal>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </c-card-body>
+      </c-card>
+  </c-col>
+</c-row>

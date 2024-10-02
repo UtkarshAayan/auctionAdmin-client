@@ -1,0 +1,130 @@
+<c-row>
+    <c-col xs>
+        <c-card class="mb-4">
+            <c-card-header>SubAdmin
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button (click)="openModal('add')" cButton size="sm" color="primary" (click)="clickAddMember()"
+                        class="me-md-2">Add New</button>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4 mt-2 mb-2">
+                     
+                      <input type="text" id="searchQuery" [(ngModel)]="searchQuery" class="form-control form-control-sm" placeholder="Search by subadmin name" />
+                    </div>
+                    <div class="col-md-2 mt-2 btn-sm">
+                      <button class="btn btn-outline-primary btn-sm" (click)="onSearch()">Search</button>
+                    </div>
+                  </div>
+            </c-card-header>
+            <c-modal size="lg" id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+                <c-modal-header>
+                    <h5 cModalTitle>{{ modalTitle }}</h5>
+                    <button (click)="toggleLiveDemo()" cButtonClose></button>
+                </c-modal-header>
+                <c-modal-body>
+                    <form cForm  [formGroup]="userForm" >
+                        <c-row [gutter]="{g: 2}" style="margin-bottom: 10px;">
+                            <c-col [md]>
+                                <div cFormFloating>
+                                    <input  [disabled]="isViewMode" formControlName="name" cFormControl id="First" type="text" value="Enter First Name" />
+                                    <label cLabel for="First">Name</label>
+
+                                </div>
+                            </c-col>
+                            <c-col [md]>
+                                <div cFormFloating>
+                                    <input  [disabled]="isViewMode" formControlName="email" cFormControl id="email" type="email" value="Enter Email Address" />
+                                    <label cLabel for="email">Email</label>
+                                </div>
+                            </c-col>
+                        </c-row>
+                        <c-row [gutter]="{g: 2}" style="margin-bottom: 10px;">
+                            <c-col [md]>
+                                <div cFormFloating>
+                                    <input  [disabled]="isViewMode" cFormControl formControlName="password" id="Password" type="Password" value="Enter Password" />
+                                    <label cLabel for="Password">Password</label>
+                                </div>
+                            </c-col>
+                            <c-col [md]>
+                                <div cFormFloating>
+                                    <input  [disabled]="isViewMode" cFormControl formControlName="contactNumber" id="contact" type="number" value="Enter Contact Number" />
+                                    <label cLabel for="contact">Contact Number</label>
+                                </div>
+                            </c-col>
+                        </c-row>
+                    </form>
+                </c-modal-body>
+                <c-modal-footer>
+                    <button (click)="toggleLiveDemo()" cButton color="secondary">
+                        Close
+                    </button>
+                    <button cButton color="primary" *ngIf="isAddMode" (click)="addSubAdmin()" type="submit">Create</button>
+                    <button cButton color="primary"*ngIf="!isAddMode && !isViewMode" (click)="updateUser(editData.data._id)" type="submit">Update</button>
+                </c-modal-footer>
+            </c-modal>
+            <c-card-body>
+                <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
+                    <thead cTableColor="light">
+                        <tr>
+                            <th >
+                                <svg cIcon name="cilPeople"></svg>
+                                Name
+                            </th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Action</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of userArray; index as i " >
+                            <td >
+                                <div>{{user.name}}</div>
+                                <div class="small text-medium-emphasis text-nowrap">
+                                    <span>
+                                        New | Registered: Jan 1 2023
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <div>{{user.email}}</div>
+                            </td>
+                            <td>
+                                <div>{{user.contactNumber}}</div>
+
+                            </td>
+                            <td>
+                                <button (click)="openModal('update')" (click)="clickAddMember()" (click)="getUserById(user._id)"
+                                    style="margin-right: 10px;">
+                                    <svg cIcon name="cil-pencil" size="sm"></svg>
+                                </button>
+                                <button (click)="deleteMember(user._id)">
+                                    <svg cIcon name="cil-trash" size="sm"></svg>
+                                </button>
+                            </td>
+                            <td>
+                                <button (click)="openModal('view')" (click)="getUserById(user._id)">View</button>
+                              </td>
+                        </tr>
+                        <tr *ngIf="userArray.length === 0">
+                            <td colspan="3" class="text-center">No Subadmin found</td>
+                          </tr>
+                    </tbody>
+                </table>
+            </c-card-body>
+            <nav aria-label="Page navigation" class="d-flex justify-content-end  mt-4 p-4">
+                <ul class="pagination pagination-sm mb-0">
+                  <li class="page-item" [class.disabled]="currentPage === 1">
+                    <a class="page-link" href="javascript:void(0);" (click)="onPageChange(currentPage - 1)">Previous</a>
+                  </li>
+                  <li class="page-item disabled">
+                    <a class="page-link" href="javascript:void(0);">Page {{ currentPage }} of {{ totalPages }}</a>
+                  </li>
+                  <li class="page-item" [class.disabled]="currentPage === totalPages">
+                    <a class="page-link" href="javascript:void(0);" (click)="onPageChange(currentPage + 1)">Next</a>
+                  </li>
+                </ul>
+              </nav>
+        </c-card>
+    </c-col>
+</c-row>

@@ -1,0 +1,206 @@
+<c-row>
+  <c-col xs>
+    <c-card class="mb-4">
+      <c-card-header>Auctions
+        <!-- <div class="input-group-addon">
+          <input aria-label="Search" cFormControl class="me-2 mt-2 mb-2" placeholder="Search" type="search"
+            style="width: 30%;">
+        </div> -->
+
+        <div class="form-group row">
+          <div class="col-md-4 mt-2 mb-2">
+            <input type="text" id="searchQuery" [(ngModel)]="searchQuery" class="form-control form-control-sm" placeholder="Search by product name" />
+          </div>
+          <div class="col-md-2 mt-2 btn-sm">
+            <button class="btn btn-outline-primary btn-sm" (click)="onSearch()">Search</button>
+          </div>
+        </div>
+      </c-card-header>
+
+      <c-modal size="lg" id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+        <c-modal-header>
+          <h5 cModalTitle>Edit User Details</h5>
+          <button (click)="toggleLiveDemo()" cButtonClose></button>
+        </c-modal-header>
+        <c-modal-body>
+          <form cForm>
+            <c-row [gutter]="{g: 2}" style="margin-bottom: 10px;">
+              <c-col [md]>
+                <div cFormFloating>
+                  <input cFormControl id="First" type="text" value="Enter Name" />
+                  <label cLabel for="First">Name</label>
+
+                </div>
+              </c-col>
+              <c-col [md]>
+                <div cFormFloating>
+                  <input cFormControl id="number" type="number" value="Enter Contact Number" />
+                  <label cLabel for="number">Contact Number</label>
+                </div>
+              </c-col>
+            </c-row>
+            <c-row [gutter]="{g: 2}" style="margin-bottom: 10px;">
+              <c-col [md]>
+                <div cFormFloating>
+                  <input cFormControl id="email" type="email" value="Enter Email Address" />
+                  <label cLabel for="email">Email Address</label>
+                </div>
+              </c-col>
+              <c-col [md]>
+                <div cFormFloating>
+                  <input cFormControl id="password" type="password" value="" />
+                  <label cLabel for="password">Password</label>
+                </div>
+              </c-col>
+            </c-row>
+          </form>
+        </c-modal-body>
+        <c-modal-footer>
+          <button (click)="toggleLiveDemo()" cButton color="secondary">
+            Close
+          </button>
+          <button cButton color="primary" (click)="toggleLiveDemo()">Save changes</button>
+        </c-modal-footer>
+      </c-modal>
+      <c-card-body>
+        <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
+          <thead cTableColor="light">
+            <tr>
+              <th>
+                <svg cIcon name="cilPeople"></svg>
+                Product
+              </th>
+              <th>Category</th>
+              <th>Verified</th>
+              <th>Action</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let auction of products; index as i ">
+
+              <td>
+                <div>{{auction.productName}}</div>
+              </td>
+              <td>
+                <div>
+                  {{auction.category}}
+                </div>
+            
+              </td>
+              <td>
+                <!-- <button (click)="verifyProduct(auction._id)">verify</button> -->    
+                <button *ngIf="!auction.proVerifyByAdmin" (click)="verifyProduct(auction._id)" style="color: red;">Verify</button>
+                <span *ngIf="auction.proVerifyByAdmin">Verified</span>
+                
+              </td>
+              <td>
+                <button  (click)="deleteMember(auction._id)">
+                  <svg cIcon name="cil-trash" size="sm"></svg>
+                </button>
+              </td>
+              <td>
+                <button (click)="toggleLiveDemo2()" (click)="getProductById(auction._id)">View</button>
+              </td>
+            </tr>
+            <tr *ngIf="products.length === 0">
+              <td colspan="5" class="text-center">No products found</td>
+            </tr>
+          </tbody>
+        </table>
+      </c-card-body>
+      <!-- view modal -->
+      <c-modal [visible]="visible2" (visibleChange)="handleLiveDemoChange2($event)" size="lg">
+        <c-modal-header>
+          <h5 cModalTitle>Product Data</h5>
+          <button (click)="toggleLiveDemo2()" cButtonClose></button>
+        </c-modal-header>
+        <c-modal-body  *ngIf="dataArray">
+          <ul cListGroup>
+            <li>
+              <strong>ProductName:</strong> {{dataArray.productName}}
+            </li>
+            <li>
+              <strong>Category:</strong> {{dataArray.category}}
+            </li>
+            <li>
+              <strong>Subcategory:</strong> {{dataArray.subcategory}}
+            </li>
+            <li>
+              <strong>StartingPrice:</strong> {{dataArray.startingPrice}}
+            </li>
+            <li>
+              <strong>ReservePrice:</strong> {{dataArray.reservePrice}}
+            </li>
+            <li>
+              <strong>ProductDescription:</strong> {{dataArray.productDescription}}
+            </li>
+            <li>
+              <strong>ProductCondition:</strong> {{dataArray.productCondition}}
+            </li>
+            <li>
+              <strong>Color:</strong> {{dataArray.color}}
+            </li>
+            <li>
+              <strong>Brand:</strong> {{dataArray.brand}}
+            </li>
+            <li>
+              <strong>Address:</strong> {{dataArray.address}}
+            </li>
+            <li>
+              <strong>Town:</strong> {{dataArray.town}}
+            </li>
+            <li>
+              <strong>Country:</strong> {{dataArray.country}}
+            </li>
+
+          </ul>
+          <div class="col-md-6 mb-2">
+            <div class="card" *ngFor="let image of dataArray.uploadDocuments">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Product Image</h5>
+                    <div class="text-center">
+                        <img [src]="image.url" class="img-fluid img-thumbnail"
+                            alt="Product Image">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card" *ngFor="let doc of dataArray.essentialDocs">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Document</h5>
+                    <div class="text-center">
+                        <p>{{ doc.filename }}</p>
+                        <a [href]="doc.url" target="_blank" class="btn btn-primary">View/Download Document</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+          
+        </c-modal-body>
+        <c-modal-footer>
+          <button (click)="toggleLiveDemo2()" cButton color="secondary">
+            Close
+          </button>
+
+        </c-modal-footer>
+      </c-modal>
+      <!-- view model end -->
+      <nav aria-label="Page navigation" class="d-flex justify-content-end mt-4 p-4">
+        <ul class="pagination pagination-sm mb-0">
+          <li class="page-item" [class.disabled]="currentPage === 1">
+            <a class="page-link" href="javascript:void(0);" (click)="onPageChange(currentPage - 1)">Previous</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" href="javascript:void(0);">Page {{ currentPage }} of {{ totalPages }}</a>
+          </li>
+          <li class="page-item" [class.disabled]="currentPage === totalPages">
+            <a class="page-link" href="javascript:void(0);" (click)="onPageChange(currentPage + 1)">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </c-card>
+
+  </c-col>
+</c-row>

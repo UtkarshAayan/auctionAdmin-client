@@ -1,0 +1,86 @@
+<c-row>
+    <c-col xs>
+
+        <c-card class="mb-4">
+            <c-card-header>Manage Profile
+
+                <c-navbar colorScheme="light">
+                    <c-container>
+                        <span class="input-group-addon">
+                            <input aria-label="Search" cFormControl class="me-2" placeholder="Search" type="search"
+                               >
+                        </span>
+
+
+                    </c-container>
+                </c-navbar>
+
+            </c-card-header>
+            <c-card-body>
+                <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
+                    <thead cTableColor="light">
+                        <tr>
+                            <th class="text-center">
+                                <svg cIcon name="cilPeople"></svg>
+                            </th>
+                            <th>Customer Name</th>
+                            <th>Service Name</th>
+                            <th>Address</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-center">
+                                <c-avatar size="md" src="./assets/img/avatars/4.jpg" status="Info"></c-avatar>
+                            </td>
+                            <td>
+                                <div>Maya </div>
+                            </td>
+                            <td>
+                                <div>House Floor</div>
+                            </td>
+                            <td>
+                                <div>123/xyz</div>
+                            </td>
+                            <td>
+                                <button style="margin-right: 10px;">
+                                    <svg cIcon name="cil-pencil" size="sm"></svg>
+                                </button>
+                                <button>
+                                    <svg cIcon name="cil-trash" size="sm"></svg>
+                                </button>
+                            </td>
+
+
+                        </tr>
+                        <tr>
+                            <td class="text-center">
+                                <c-avatar size="md" src="./assets/img/avatars/6.jpg" status="Info"></c-avatar>
+                            </td>
+                            <td>
+                                <div>Mike Doe</div>
+                            </td>
+                            <td>
+                                <div>Bathrooms</div>
+                            </td>
+                            <td>
+                                <div>321/XYZ</div>
+                            </td>
+                            <td>
+                                <button style="margin-right: 10px;">
+                                    <svg cIcon name="cil-pencil" size="sm"></svg>
+                                </button>
+                                <button>
+                                    <svg cIcon name="cil-trash" size="sm"></svg>
+                                </button>
+                            </td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+            </c-card-body>
+        </c-card>
+    </c-col>
+</c-row>

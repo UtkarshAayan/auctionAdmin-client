@@ -1,0 +1,142 @@
+<c-row>
+    <c-col xs>
+      <c-card class="mb-4">
+        <c-card-header>Orders
+
+          <div class="float-end">
+            <!-- <select class="form-select w-auto mt-2 mb-2" id="statusFilter" (change)="filterByStatus($event)">
+              <option value="">All</option>
+              <option value="pending">Pending</option>
+              <option value="on the way">On the Way</option>
+              <option value="delivered">Delivered</option>
+              <option value="cancel">Cancel</option>
+            </select> -->
+            
+            
+          </div>
+        </c-card-header>
+
+        <c-card-body>
+          <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
+            <thead cTableColor="light">
+              <tr>
+                <th>
+                  <svg cIcon name="cilPeople"></svg>
+                  Transaction Id
+                </th>
+                <th>Transaction Date</th>
+                <th>Buyer</th>
+                <th>Status</th>
+                <th>Action</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div></div>
+                </td>
+                <td>
+                  <div></div>
+                </td>
+                <td>
+                  <div></div>
+                </td>
+                <td>
+                  <!-- <c-dropdown>
+                    <button class="bg-secondary p-2 text-dark bg-opacity-10" cButton cDropdownToggle size="sm">
+                      {{ order.status }}
+                    </button>
+                    <ul cDropdownMenu>
+                      <li>
+                        <button cDropdownItem (click)="updateOrderStatus(order._id, 'pending')">Pending</button>
+                      </li>
+                      <li>
+                        <button cDropdownItem (click)="updateOrderStatus(order._id, 'on the way')">On the Way</button>
+                      </li>
+                      <li>
+                        <button cDropdownItem (click)="updateOrderStatus(order._id, 'delivered')">Delivered</button>
+                      </li>
+                      <li>
+                        <button cDropdownItem (click)="updateOrderStatus(order._id, 'cancel')">Cancel</button>
+                      </li>
+                    </ul>
+                  </c-dropdown> -->
+                </td>
+                <td>
+                  <button>
+                    <svg cIcon name="cil-trash" size="sm"></svg>
+                  </button>
+                </td>
+                <td>
+                  <button >View</button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5" class="text-center">No transaction found</td>
+              </tr>
+              
+            </tbody>
+          </table>
+          
+        </c-card-body>
+        <!-- view modal -->
+        <c-modal [visible]="visible2" (visibleChange)="handleLiveDemoChange2($event)">
+          <c-modal-header>
+            <h5 cModalTitle>Order Data</h5>
+            <button (click)="toggleLiveDemo2()" cButtonClose></button>
+          </c-modal-header>
+          <c-modal-body>
+            <ul cListGroup>
+              <li>
+                <strong>ProductName:</strong>
+              </li>
+              
+              <li>
+                <strong>Buy Price:</strong> 
+              </li>
+              <li>
+                <strong>Buyer Name:</strong>  
+              
+              </li>
+              <li>
+                <strong>Buyer Email:</strong>
+              </li>
+              <li>
+                <strong>Order Date:</strong>
+              </li>
+              
+               
+              <li>
+                <strong>Address:</strong>  
+              </li>
+            </ul>
+          </c-modal-body>
+          <c-modal-footer>
+            <button (click)="toggleLiveDemo2()" cButton color="secondary">
+              Close
+            </button>
+  
+          </c-modal-footer>
+        </c-modal>
+        <!-- view model end -->
+        <!-- <nav aria-label="Page navigation" class="d-flex justify-content-end mt-4 p-4" *ngIf="pagination && orders && orders.length > 0">
+          <ul class="pagination pagination-sm mb-0">
+            <li class="page-item" [class.disabled]="pagination.currentPage === 1">
+              <a class="page-link" href="javascript:void(0);" (click)="goToPage(pagination.currentPage - 1)">Previous</a>
+            </li>
+            <li class="page-item disabled">
+              <a class="page-link" href="javascript:void(0);">Page {{ pagination.currentPage }} of {{ pagination.totalPages }}</a>
+            </li>
+            <li class="page-item" [class.disabled]="pagination.currentPage === pagination.totalPages">
+              <a class="page-link" href="javascript:void(0);" (click)="goToPage(pagination.currentPage + 1)">Next</a>
+            </li>
+          </ul>
+        </nav> -->
+        
+   
+      </c-card>
+   
+      
+    </c-col>
+  </c-row>

@@ -1,0 +1,101 @@
+<c-row>
+    <c-col xs>
+        <c-card class="mb-4">
+         
+          
+          <c-modal size="lg" id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+            <c-modal-header>
+              <h5 cModalTitle>{{ modalTitle }}</h5>
+              <button (click)="toggleLiveDemo()" cButtonClose></button>
+            </c-modal-header>
+            <c-modal-body>
+              <form cForm [formGroup]="emailForm">
+                <c-row [gutter]="{g: 2}" style="margin-bottom: 10px;">
+                  <c-col [md]>
+                    <div cFormFloating>
+                      <!-- <input formControlName="title" cFormControl id="First" type="text" [readonly]="isReadOnly" /> -->
+                      <textarea id="First" class="form-control" formControlName="title" [readonly]="isReadOnly"></textarea>
+                      <label cLabel for="First">Title</label>
+                    </div>
+                  </c-col>
+                  <c-col [md]>
+                    <div cFormFloating>
+                      <!-- <input formControlName="subject" cFormControl id="number" type="text" [readonly]="isReadOnly" /> -->
+                      <textarea id="number" class="form-control" formControlName="subject" [readonly]="isReadOnly"></textarea>
+                      <label cLabel for="number">Subject</label>
+                    </div>
+                  </c-col>
+                </c-row>
+                <c-row [gutter]="{g: 2}" style="margin-bottom: 10px;">
+                  <c-col [md]>
+                    <div cFormFloating>
+                      <!-- <input formControlName="body" cFormControl id="Body" type="text" [readonly]="isReadOnly" /> -->
+                      <textarea id="Body" class="form-control" formControlName="body" [readonly]="isReadOnly"></textarea>
+                      <label cLabel for="Body">Body</label>
+                    </div>
+                  </c-col>
+                </c-row>
+              </form>
+            </c-modal-body>
+            <c-modal-footer>
+              <button (click)="toggleLiveDemo()" cButton color="secondary">
+                Close
+              </button>
+              <button *ngIf="!isEditMode && !isReadOnly" cButton color="primary" (click)="createTemplate()" type="submit">
+                Create
+              </button>
+              <button *ngIf="isEditMode && !isReadOnly" cButton color="primary" (click)="updateTemplate(selectedTemplate._id)" type="submit">
+                Update
+              </button>
+            </c-modal-footer>
+          </c-modal>
+          
+          <c-card-header>
+            Manage Email Template
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button (click)="clickAddMember()" cButton size="sm" color="primary" class="me-md-2">Add New</button>
+            </div>
+           
+          </c-card-header>
+          
+          <!-- Table for listing templates -->
+          <c-card-body>
+            <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
+              <thead cTableColor="light">
+                <tr>
+                  <th>Title</th>
+                  <th>Subject</th>
+                  <th>Body</th>
+                  <th>Action</th>
+                  <td></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let template of templates">
+                  <td>{{ template.title }}</td>
+                  <td>{{ template.subject }}</td>
+                  <td>{{ template.body }}</td>
+                  <td>
+                    <div style="display: inline-flex; align-items: center;">
+                      <button (click)="editTemplate(template)" size="sm" style="margin-right: 5px;">
+                        <svg cIcon name="cil-pencil" size="sm"></svg>
+                      </button>
+                      <button (click)="deleteTemplate(template._id)" size="sm">
+                        <svg cIcon name="cil-trash" size="sm"></svg>
+                      </button>
+                    </div>
+                  </td>
+                  
+                  <td>
+                    <button (click)="viewTemplate(template)"  size="sm"  style="margin-right: 10px;">
+                      View
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </c-card-body>
+          
+        </c-card>
+    </c-col>
+</c-row>

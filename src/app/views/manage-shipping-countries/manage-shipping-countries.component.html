@@ -1,0 +1,89 @@
+<c-row>
+    <c-col xs>
+        <c-card class="mb-4">
+         
+          
+          <c-modal size="lg" id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
+            <c-modal-header>
+              <h5 cModalTitle>{{ modalTitle }}</h5>
+              <button (click)="toggleLiveDemo()" cButtonClose></button>
+            </c-modal-header>
+            <c-modal-body>
+              <form cForm [formGroup]="countryForm">
+                <c-row [gutter]="{g: 2}" style="margin-bottom: 10px;">
+                  <c-col [md]>
+                    <div cFormFloating>
+                      <textarea id="First" class="form-control" formControlName="name" [readonly]="isReadOnly"></textarea>
+                      <label cLabel for="First">Name</label>
+                    </div>
+                  </c-col>
+                  <c-col [md]>
+                    <div cFormFloating>
+                      <textarea id="number" class="form-control" formControlName="code" [readonly]="isReadOnly"></textarea>
+                      <label cLabel for="number">Code</label>
+                    </div>
+                  </c-col>
+                </c-row>
+              </form>
+            </c-modal-body>
+            <c-modal-footer>
+              <button (click)="toggleLiveDemo()" cButton color="secondary">
+                Close
+              </button>
+              <button *ngIf="!isEditMode && !isReadOnly" cButton color="primary" (click)="createCountry()" type="submit">
+                Create
+              </button>
+              <button *ngIf="isEditMode && !isReadOnly" cButton color="primary" (click)="updateCountry(selectedCountry._id)" type="submit">
+                Update
+              </button>
+            </c-modal-footer>
+          </c-modal>
+          
+          <c-card-header>
+            Manage Shipping Countries
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button (click)="clickAddMember()" cButton size="sm" color="primary" class="me-md-2">Add New</button>
+            </div>
+           
+          </c-card-header>
+          
+          <!-- Table for listing countries -->
+          <c-card-body>
+            <table [hover]="true" [responsive]="true" [striped]="true" align="middle" cTable class="mb-0 border">
+              <thead cTableColor="light">
+                <tr>
+                  <th>Name</th>
+                  <th>Code</th>
+                  <th>Action</th>
+                  <td></td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let country of countries">
+                  <td>{{ country.name }}</td>
+                  <td>{{ country.code }}</td>
+
+                  <td>
+                    <div style="display: inline-flex; align-items: center;">
+                      <button (click)="editCountry(country)" size="sm" style="margin-right: 5px;">
+                        <svg cIcon name="cil-pencil" size="sm"></svg>
+                      </button>
+                      <button (click)="deleteCountry(country._id)" size="sm">
+                        <svg cIcon name="cil-trash" size="sm"></svg>
+                      </button>
+                    </div>
+                  </td>
+                  
+                  <td>
+                    <button (click)="viewCountry(country)"  size="sm"  style="margin-right: 10px;">
+                      View
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </c-card-body>
+          
+        </c-card>
+    </c-col>
+</c-row>

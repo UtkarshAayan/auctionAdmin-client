@@ -1,0 +1,76 @@
+<c-row>
+    <c-col xs>
+      <!-- Create Help Content Form -->
+      <c-card class="mb-4">
+        <c-card-header>
+          <h5 class="card-title mb-0">Create Help Content</h5>
+        </c-card-header>
+        <c-card-body>
+          <form [formGroup]="helpForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <textarea id="title" class="form-control" formControlName="title"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="content" class="form-label">Content</label>
+              <textarea id="content" class="form-control" formControlName="content"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">{{ currentEditId ? 'Update' : 'Create' }}</button>
+          </form>
+  
+          <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
+          <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+        </c-card-body>
+      </c-card>
+  
+      <!-- Display Help Contents -->
+      <div class="container mt-5">
+        <h2>Help Contents</h2>
+        <div>
+          <div *ngFor="let content of helpContents" class="card mb-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <h5>{{ content.title }}</h5>
+              <div>
+                <button class="btn btn-info btn-sm me-2" (click)="editHelpContent(content)">Edit</button>
+                <button class="btn btn-danger btn-sm" (click)="deleteHelpContent(content._id)">
+                  <svg cIcon name="cil-trash" size="sm"></svg>
+                </button>
+              </div>
+            </div>
+            <div class="card-body">
+              <p>{{ content.content }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Edit Help Content Modal -->
+      <div class="modal fade" id="editHelpContentModal" tabindex="-1" aria-labelledby="editHelpContentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editHelpContentModalLabel">Edit Help Content</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="helpForm"  (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                  <label for="title" class="form-label">Title</label>
+                  <textarea id="title" class="form-control" formControlName="title"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="content" class="form-label">Content</label>
+                  <textarea id="content" class="form-control" formControlName="content"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" [disabled]="helpForm.invalid">Save changes</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </c-col>
+  </c-row>
+  

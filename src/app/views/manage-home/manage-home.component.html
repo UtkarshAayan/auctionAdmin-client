@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header">
+      <h5>Upload Banner Images</h5>
+    </div>
+    <div class="card-body">
+      <!-- Only show the form if there are fewer than 3 images -->
+      <form *ngIf="bannerImages.length < 3" (ngSubmit)="uploadImages()">
+        <div class="mb-3">
+          <label for="bannerImages" class="form-label">Choose Banner Images (Max 3)</label>
+          <input type="file" class="form-control" id="bannerImages" (change)="onFileSelected($event)" multiple>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!selectedFiles || selectedFiles.length === 0">Upload</button>
+      </form>
+    
+      <!-- Message when 3 images have been uploaded -->
+      <div *ngIf="bannerImages.length >= 3" class="alert alert-info">
+        Maximum of 3 images uploaded. Please delete an image to upload more.
+      </div>
+    
+      <!-- Success and Error Messages -->
+      <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
+      <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+    </div>
+    
+  </div>
+
+  <!-- Displaying Uploaded Banner Images -->
+  <div class="mt-4">
+    <h5>Uploaded Banner Images</h5>
+    <div class="row">
+      <div *ngFor="let image of bannerImages" class="col-md-4">
+        <div class="card mb-3">
+          <img [src]="image" class="card-img-top fixed-size-img" alt="Banner Image">
+          <div class="card-body">
+            <button class="btn btn-danger btn-sm" (click)="deleteImage(image)"> <svg cIcon name="cil-trash" size="sm"></svg></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
