@@ -29,7 +29,7 @@ export class EmployeeManagementComponent implements OnInit {
 
   public activePage = 2;
   editData: any;
- 
+  passwordFieldType: string = 'password';
   setActivePage(page: number) {
     this.activePage = page;
   }
@@ -73,6 +73,9 @@ export class EmployeeManagementComponent implements OnInit {
     this.getAllSellers();
   }
 
+  togglePasswordVisibility(): void {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
+  }
   clickAddMember() {
     this.userForm.reset();
   }

@@ -30,6 +30,7 @@ export class ManageSubadminComponent {
   totalUsers: number = 0;
   limit: number = 5;
   subAdminArray: any[] = [];
+  passwordFieldType: string = 'password';
   toggleLiveDemo() {
     this.visible = !this.visible;
   }
@@ -51,6 +52,11 @@ export class ManageSubadminComponent {
     })
     this.getAllSubadmin()
   }
+
+  togglePasswordVisibility(): void {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
+  }
+
 
   openModal(action: string): void {
     this.isAddMode = action === 'add';

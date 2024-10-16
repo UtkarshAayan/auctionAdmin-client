@@ -13,7 +13,7 @@ export class ManageBuyersComponent {
   usersService = inject(UsersService);
   router = inject(Router)
   userForm!: FormGroup;
-
+  passwordFieldType: string = 'password';
   public activePage = 2;
   editData: any;
  
@@ -63,6 +63,9 @@ export class ManageBuyersComponent {
     this.userForm.reset();
   }
 
+  togglePasswordVisibility(): void {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
+  }
   getAllBuyers(): void {
     this.usersService.getAllBuyersService(this.currentPage, this.limit, this.searchQuery).subscribe(response => {
       this.userArray = response.buyers;

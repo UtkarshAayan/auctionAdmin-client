@@ -13,13 +13,17 @@ export class LoginComponent {
   router = inject(Router)
   authService = inject(AuthService);
   loginForm!: FormGroup;
-
+  passwordFieldType: string = 'password';
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: ['',Validators.compose([Validators.required, Validators.email])],
       password: ['',Validators.required],
     })
+  }
+
+  togglePasswordVisibility(): void {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
   submit(){
     console.log(this.loginForm.value)
