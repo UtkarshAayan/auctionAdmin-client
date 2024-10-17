@@ -77,7 +77,7 @@ export const navItems: INavData[] = [
     iconComponent: { name: 'cil-description' }
   },
   {
-    name: 'Manage Aboutus',
+    name: 'Manage About us',
     url: '/manage-aboutus',
     iconComponent: { name: 'cil-description' }
   },
