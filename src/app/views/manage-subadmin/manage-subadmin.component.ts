@@ -105,7 +105,6 @@ export class ManageSubadminComponent {
 
 
   addSubAdmin() {
-    console.log(this.userForm.value)
     this.authService.createSubadminService(this.userForm.value)
     .subscribe({
       next:(res)=>{
@@ -133,8 +132,7 @@ export class ManageSubadminComponent {
     this.usersService.getUserByIdService(id)
       .subscribe(data => {
         this.editData = data
-        this.dataArray = this.editData.data
-        console.log(this.dataArray);  
+        this.dataArray = this.editData.data 
         this.userForm.patchValue({
           name: this.editData.data.name,
           email: this.editData.data.email,
@@ -156,12 +154,10 @@ export class ManageSubadminComponent {
     };
     
     userId = this.editData.data._id; // Assuming you have user ID in editData
-    console.log(userId)
-    console.log(updatedUserData)
+  
     this.usersService.updateUserService(updatedUserData, userId)
         .subscribe(updatedUser => {
           alert("Update Successfully")
-            console.log('User updated:', updatedUser);
             this.getAllSubadmin();
             this.getUserById(userId)
             this.toggleLiveDemo();

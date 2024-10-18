@@ -47,7 +47,6 @@ export class ManageAboutusComponent {
       next: (data) => {
         this.aboutusContents = data;
         this.aboutusContents =  this.aboutusContents.data;
-        console.log(this.aboutusContents)
       },
       error: (err) => {
         this.errorMessage = 'An error occurred while fetching aboutus.';

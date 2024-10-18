@@ -46,7 +46,7 @@ export class PrivacyPolicyComponent {
       next: (data) => {
         this.privacyContents = data;
         this.privacyContents =  this.privacyContents.data;
-        console.log(this.privacyContents)
+    
       },
       error: (err) => {
         this.errorMessage = 'An error occurred while fetching privacy contents.';

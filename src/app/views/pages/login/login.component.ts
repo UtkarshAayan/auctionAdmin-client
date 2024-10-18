@@ -26,7 +26,6 @@ export class LoginComponent {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
   submit(){
-    console.log(this.loginForm.value)
     this.authService.loginService(this.loginForm.value)
     .subscribe({
       next:(res)=>{

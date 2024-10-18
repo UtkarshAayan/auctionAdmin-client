@@ -33,7 +33,6 @@ export class ManageSettingsComponent  {
     this.adminSettingsService.getCategories().subscribe((response) => {
         this.categories = response
         this.categories =  this.categories.data
-        console.log(this.categories)
     });
   }
 
@@ -46,15 +45,15 @@ export class ManageSettingsComponent  {
         const reader = new FileReader();
         reader.onload = () => {
           data[key] = reader.result;
-          console.log(`Key: ${key}, Value:`, reader.result);
+        
         };
         reader.readAsDataURL(value); // Use readAsDataURL or readAsText based on the content type
       } else {
         data[key] = value;
-        console.log(`Key: ${key}, Value: ${value}`);
+       
       }
     });
-    console.log('FormData content:', data);
+   
   }
   
   

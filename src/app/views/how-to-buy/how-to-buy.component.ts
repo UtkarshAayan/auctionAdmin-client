@@ -45,7 +45,6 @@ export class HowToBuyComponent {
       next: (data) => {
         this.helpContents = data;
         this.helpContents = this.helpContents.data;
-        console.log(this.helpContents)
       },
       error: (err) => {
         this.errorMessage = 'An error occurred while fetching help contents.';

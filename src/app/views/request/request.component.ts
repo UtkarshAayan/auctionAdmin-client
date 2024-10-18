@@ -69,9 +69,7 @@ export class RequestComponent {
     this.adminSettingsService.getRequestByIdService(id)
       .subscribe(data => {
         this.editData = data
-        this.editData = this.editData.data
-        console.log(this.editData);  
-    
+        this.editData = this.editData.data    
       })
   }
   deleteRequest(id: any) {

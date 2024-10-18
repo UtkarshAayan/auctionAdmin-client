@@ -43,7 +43,6 @@ export class AuctionManagementComponent {
       .subscribe(response => {
         
         this.products = response.data.products;
-        console.log(this.products)
         this.currentPage = response.data.currentPage;
         this.totalPages = response.data.totalPages;
       });
@@ -63,7 +62,6 @@ export class AuctionManagementComponent {
       .subscribe(data => {
         this.editData = data
         this.dataArray = this.editData.data
-        console.log(this.dataArray);  
       })
   }
 
@@ -79,7 +77,6 @@ export class AuctionManagementComponent {
   verifyProduct(productId: any) {
     this.autionProductService.verifyAuctionByAdminService(productId).subscribe(response => {
       alert("Product Verified")
-      console.log('Product verified', response);
       this.proArray = this.proArray.map(product =>
         product.id === productId ? { ...product, verified: true } : product
       );

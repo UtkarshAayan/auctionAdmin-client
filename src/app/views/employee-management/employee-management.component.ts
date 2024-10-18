@@ -92,7 +92,6 @@ export class EmployeeManagementComponent implements OnInit {
   getAllSellers(): void {
     this.usersService.getAllSellersService(this.currentPage, this.limit, this.searchQuery).subscribe(response => {
       this.userArray = response.sellers;
-      console.log(this.userArray)
       this.currentPage = response.currentPage;
       this.totalPages = response.totalPages;
       this.totalUsers = response.totalUsers;
@@ -124,7 +123,6 @@ export class EmployeeManagementComponent implements OnInit {
       .subscribe(data => {
         this.editData = data
         this.dataArray = this.editData.data
-        console.log(this.dataArray);  
         this.userForm.patchValue({
           name: this.editData.data.name,
           email: this.editData.data.email,
@@ -146,12 +144,9 @@ export class EmployeeManagementComponent implements OnInit {
     };
     
     userId = this.editData.data._id; // Assuming you have user ID in editData
-    console.log(userId)
-    console.log(updatedUserData)
     this.usersService.updateUserService(updatedUserData, userId)
         .subscribe(updatedUser => {
           alert("Update Successfully")
-            console.log('User updated:', updatedUser);
             this.getUserById(userId)
             // Optionally, you can reset the form or perform other actions upon successful update
         });
@@ -165,7 +160,6 @@ export class EmployeeManagementComponent implements OnInit {
     this.usersService.verifyUserByAdminService(productId).subscribe(response => {
       // Handle the response, update UI accordingly
       alert("User Verified")
-      console.log('User verified', response);
       this.userArray = this.userArray.map(product =>
         product.id === productId ? { ...product, verified: true } : product
       );

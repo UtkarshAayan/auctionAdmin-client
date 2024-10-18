@@ -69,7 +69,6 @@ export class ManageBuyersComponent {
   getAllBuyers(): void {
     this.usersService.getAllBuyersService(this.currentPage, this.limit, this.searchQuery).subscribe(response => {
       this.userArray = response.buyers;
-      console.log(this.userArray)
       this.currentPage = response.currentPage;
       this.totalPages = response.totalPages;
       this.totalUsers = response.totalUsers;
@@ -102,7 +101,6 @@ export class ManageBuyersComponent {
       .subscribe(data => {
         this.editData = data
         this.dataArray = this.editData.data
-        console.log(this.dataArray);  
         this.userForm.patchValue({
           name: this.editData.data.name,
           email: this.editData.data.email,
@@ -124,12 +122,9 @@ export class ManageBuyersComponent {
     };
     
     userId = this.editData.data._id; // Assuming you have user ID in editData
-    console.log(userId)
-    console.log(updatedUserData)
     this.usersService.updateUserService(updatedUserData, userId)
         .subscribe(updatedUser => {
           alert("Update Successfully")
-            console.log('User updated:', updatedUser);
             this.getUserById(userId)
             // Optionally, you can reset the form or perform other actions upon successful update
         });
@@ -143,7 +138,6 @@ export class ManageBuyersComponent {
     this.usersService.verifyUserByAdminService(productId).subscribe(response => {
       // Handle the response, update UI accordingly
       alert("User Verified")
-      console.log('User verified', response);
       this.userArray = this.userArray.map(product =>
         product.id === productId ? { ...product, verified: true } : product
       );

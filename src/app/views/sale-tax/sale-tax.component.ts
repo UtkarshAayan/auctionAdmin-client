@@ -35,7 +35,6 @@ export class SaleTaxComponent {
         this.editData = data
       
         this.editArray = this.editData.data
-        console.log(this.editArray);
         this.settingsForm.patchValue({
           saleTax: this.editData.data.saleTax,
         })

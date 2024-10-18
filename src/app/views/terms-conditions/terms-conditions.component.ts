@@ -46,7 +46,7 @@ export class TermsConditionsComponent {
       next: (data) => {
         this.termsContents = data;
         this.termsContents =  this.termsContents.data;
-        console.log(this.termsContents)
+
       },
       error: (err) => {
         this.errorMessage = 'An error occurred while fetching privacy contents.';

@@ -52,8 +52,7 @@ export class ProfileAccountComponent {
       password: ['', Validators.required],
     })
     const userId = localStorage.getItem('user_id');
-    console.log(userId)
-
+ 
     this.getUserById(userId)
   }
   togglePasswordVisibility(): void {
@@ -66,7 +65,7 @@ export class ProfileAccountComponent {
         this.editData = data
       
         this.editArray = this.editData.data
-        console.log(this.editArray);
+   
         this.profileForm.patchValue({
           name: this.editData.data.name,
           contactNumber: this.editData.data.contactNumber,
@@ -87,8 +86,7 @@ export class ProfileAccountComponent {
     };
     
     userId = this.editData.data._id; // Assuming you have user ID in editData
-    console.log(userId)
-    console.log(updatedUserData)
+    
     this.usersService.updateUserService(updatedUserData, userId)
       .subscribe({
         next: (updatedUser) => {
@@ -130,7 +128,6 @@ export class ProfileAccountComponent {
   showLogoutModal: boolean = false;
 
   performLogout() {
-    console.log('Performing logout...');
     this.showLogoutModal = false;
   }
 
