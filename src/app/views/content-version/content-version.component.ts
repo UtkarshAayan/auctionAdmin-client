@@ -41,11 +41,9 @@ export class ContentVersionComponent implements OnInit {
     .subscribe((res)=>{
       this.versionData = res
       this.versionArray = this.versionData.data
-     console.log(this.versionArray)
     })
   }
   submit(){
-    console.log(this.versionForm.value)
     this.contentService.createVersionService(this.versionForm.value)
     .subscribe({
       next:(res)=>{

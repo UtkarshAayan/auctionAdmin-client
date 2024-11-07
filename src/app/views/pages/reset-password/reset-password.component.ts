@@ -31,12 +31,10 @@ export class ResetPasswordComponent implements OnInit {
 
     this.activatedRoute.params.subscribe(val => {
       this.token = val['token'];
-      console.log(this.token);
     });
   }
 
   submit() {
-    console.log(this.resetForm.value)
     let resetObj = {
       token: this.token,
       password: this.resetForm.value.password

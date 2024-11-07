@@ -5,7 +5,8 @@
           
           <c-modal size="lg" id="liveDemoModal" [visible]="visible" (visibleChange)="handleLiveDemoChange($event)">
             <c-modal-header>
-              <h5 cModalTitle>{{ modalTitle }}</h5>
+            
+              <h5 class="card-title mb-0">Add Shipping Country</h5>
               <button (click)="toggleLiveDemo()" cButtonClose></button>
             </c-modal-header>
             <c-modal-body>
@@ -40,7 +41,7 @@
           </c-modal>
           
           <c-card-header>
-            Manage Shipping Countries
+            <h5 class="card-title mb-0"> Manage Shipping Countries </h5>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
               <button (click)="clickAddMember()" cButton size="sm" color="primary" class="me-md-2">Add New</button>
             </div>

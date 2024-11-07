@@ -1,7 +1,7 @@
 <c-row>
     <c-col xs>
         <c-card class="mb-4">
-            <c-card-header>SubAdmin
+            <c-card-header><h5 class="card-title mb-0">Manage SubAdmins</h5>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <button (click)="openModal('add')" cButton size="sm" color="primary" (click)="clickAddMember()"
                         class="me-md-2">Add New</button>
@@ -24,34 +24,83 @@
                 <c-modal-body>
                     <form cForm  [formGroup]="userForm" >
                         <c-row [gutter]="{g: 2}" style="margin-bottom: 10px;">
+                            <!-- Name Field -->
                             <c-col [md]>
-                                <div cFormFloating>
-                                    <input  [disabled]="isViewMode" formControlName="name" cFormControl id="First" type="text" value="Enter First Name" />
-                                    <label cLabel for="First">Name</label>
-
-                                </div>
+                              <div cFormFloating>
+                                <input 
+                                  [disabled]="isViewMode" 
+                                  formControlName="name" 
+                                  cFormControl 
+                                  id="First" 
+                                  type="text" 
+                                  class="form-control" 
+                                  placeholder="Enter First Name" 
+                                />
+                                <label cLabel for="First">Name</label>
+                              </div>
                             </c-col>
+                          
+                            <!-- Email Field -->
                             <c-col [md]>
-                                <div cFormFloating>
-                                    <input  [disabled]="isViewMode" formControlName="email" cFormControl id="email" type="email" value="Enter Email Address" />
-                                    <label cLabel for="email">Email</label>
-                                </div>
+                              <div cFormFloating>
+                                <input 
+                                  [disabled]="isViewMode" 
+                                  formControlName="email" 
+                                  cFormControl 
+                                  id="email" 
+                                  type="email" 
+                                  class="form-control" 
+                                  placeholder="Enter Email Address" 
+                                />
+                                <label cLabel for="email">Email</label>
+                              </div>
                             </c-col>
-                        </c-row>
+                          </c-row>
+                          
                         <c-row [gutter]="{g: 2}" style="margin-bottom: 10px;">
+                            <!-- Password Field -->
                             <c-col [md]>
-                                <div cFormFloating>
-                                    <input  [disabled]="isViewMode" cFormControl formControlName="password" id="Password" type="Password" value="Enter Password" />
-                                    <label cLabel for="Password">Password</label>
-                                </div>
+                              <div cFormFloating class="position-relative">
+                                <input 
+                                  [disabled]="isViewMode" 
+                                  cFormControl 
+                                  formControlName="password" 
+                                  id="Password" 
+                                  [type]="passwordFieldType" 
+                                  class="form-control" 
+                                  placeholder="Password" 
+                                />
+                                <label cLabel for="Password">Password</label>
+                          
+                                <!-- Toggle Password Visibility Button -->
+                                <button 
+                                type="button" 
+                                class="btn btn-outline-secondary position-absolute end-0 top-50 translate-middle-y me-2" 
+                                (click)="togglePasswordVisibility()"
+                                style="z-index: 2;">
+                                {{ passwordFieldType === 'password' ? '🙈' : '👁️' }}
+                              </button>
+                              
+                              </div>
                             </c-col>
+                          
+                            <!-- Contact Number Field -->
                             <c-col [md]>
-                                <div cFormFloating>
-                                    <input  [disabled]="isViewMode" cFormControl formControlName="contactNumber" id="contact" type="number" value="Enter Contact Number" />
-                                    <label cLabel for="contact">Contact Number</label>
-                                </div>
+                              <div cFormFloating>
+                                <input 
+                                  [disabled]="isViewMode" 
+                                  cFormControl 
+                                  formControlName="contactNumber" 
+                                  id="contact" 
+                                  type="number" 
+                                  class="form-control" 
+                                  placeholder="Enter Contact Number" 
+                                />
+                                <label cLabel for="contact">Contact Number</label>
+                              </div>
                             </c-col>
-                        </c-row>
+                          </c-row>
+                          
                     </form>
                 </c-modal-body>
                 <c-modal-footer>

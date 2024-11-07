@@ -1,8 +1,8 @@
 <c-row>
     <c-col xs>
       <c-card class="mb-4">
-        <c-card-header>Manage Buyers
-        
+        <c-card-header>
+          <h5 class="card-title mb-0">Manage Buyers</h5>
           <div class="form-group row">
             <div class="col-md-4 mt-2 mb-2">
              
@@ -45,9 +45,27 @@
                   </div>
                 </c-col>
                 <c-col [md]>
-                  <div cFormFloating>
-                    <input formControlName="password" cFormControl id="password" type="password" value="" />
-                    <label cLabel for="password">Password</label>
+                  <div cFormFloating class="position-relative">
+                    <input 
+                    
+                      cFormControl 
+                      formControlName="password" 
+                      id="Password" 
+                      [type]="passwordFieldType" 
+                      class="form-control" 
+                      placeholder="Password" 
+                    />
+                    <label cLabel for="Password">Password</label>
+              
+                    <!-- Toggle Password Visibility Button -->
+                    <button 
+                    type="button" 
+                    class="btn btn-outline-secondary position-absolute end-0 top-50 translate-middle-y me-2" 
+                    (click)="togglePasswordVisibility()"
+                    style="z-index: 2;">
+                    {{ passwordFieldType === 'password' ? '🙈' : '👁️' }}
+                  </button>
+                  
                   </div>
                 </c-col>
               </c-row>

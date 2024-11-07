@@ -103,7 +103,6 @@ export class ManageShippingCountriesComponent {
   deleteCountry(id: string): void {
     this.adminSettingsService.deleteCountry(id).subscribe({
       next: (data) => {
-        console.log('Country deleted', data);
         this.loadCountries(); 
       },
       error: (error) => {

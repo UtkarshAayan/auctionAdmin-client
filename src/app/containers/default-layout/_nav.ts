@@ -4,12 +4,12 @@ export const navItems: INavData[] = [
   {
     name: 'Manage Sellers',
     url: '/userManagement',
-    iconComponent: { name: 'cil-user' }
+    iconComponent: { name: 'cil-people' }
   },
   {
     name: 'Manage Buyers',
     url: '/manageBuyers',
-    iconComponent: { name: 'cil-user' }
+    iconComponent: { name: 'cil-people' }
   },
   {
     name: 'Manage Auction',
@@ -19,12 +19,12 @@ export const navItems: INavData[] = [
   {
     name: 'Manage Order',
     url: '/manage-order',
-    iconComponent: { name: 'cil-user' }
+    iconComponent: { name: 'cil-file' }
   },
   {
     name: 'Manage Transaction',
     url: '/manage-transaction',
-    iconComponent: { name: 'cil-user' }
+    iconComponent: { name: 'cil-credit-card' }
   },
   {
     name: 'Manage SubAdmin',
@@ -34,12 +34,12 @@ export const navItems: INavData[] = [
   {
     name: 'Manage SalesTax',
     url: '/manageSalesTax',
-    iconComponent: { name: 'cil-settings' }
+    iconComponent: { name: 'cil-dollar' }
   },
   {
     name: 'Manage BuyersPremium',
     url: '/manageBuyersPremium',
-    iconComponent: { name: 'cil-settings' }
+    iconComponent: { name: 'cil-dollar' }
   },
   {
     name: 'Manage Categories',
@@ -54,48 +54,48 @@ export const navItems: INavData[] = [
   {
     name: 'Manage Help Content',
     url: '/manageHelp',
-    iconComponent: { name: 'cil-star' }
+    iconComponent: { name: 'cil-description' }
   },
   {
     name: 'Manage Sell Content',
     url: '/manageSellContent',
-    iconComponent: { name: 'cil-star' }
+    iconComponent: { name: 'cil-description' }
   },
   {
     name: 'Manage Buy Content',
     url: '/manageBuyContent',
-    iconComponent: { name: 'cil-star' }
+    iconComponent: { name: 'cil-description' }
   },
   {
     name: 'Manage Privacy-Policy',
     url: '/privacy-policy',
-    iconComponent: { name: 'cil-star' }
+    iconComponent: { name: 'cil-description' }
   },
   {
     name: 'Manage Terms-Conditions',
     url: '/terms-conditions',
-    iconComponent: { name: 'cil-star' }
+    iconComponent: { name: 'cil-description' }
   },
   {
-    name: 'Manage Aboutus',
+    name: 'Manage About us',
     url: '/manage-aboutus',
-    iconComponent: { name: 'cil-star' }
+    iconComponent: { name: 'cil-description' }
   },
   {
     name: 'Manage Request',
     url: '/manageRequest',
-    iconComponent: { name: 'cil-star' }
+    iconComponent: { name: 'cil-bell' }
   },
  
   {
     name: 'Manage Email Template',
     url:  'manageEmailTemplate',
-    iconComponent: { name: 'cil-notes' }
+    iconComponent: { name: 'cil-task' }
   },
 
   {
     name: 'Manage Home',
     url:  'manage-home',
-    iconComponent: { name: 'cil-notes' }
+    iconComponent: { name: 'cil-home' }
   },
 ];

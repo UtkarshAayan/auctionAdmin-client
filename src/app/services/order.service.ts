@@ -33,4 +33,13 @@ deleteOrder(id: string): Observable<any> {
 updateOrderStatus(orderId: string, status: string): Observable<any> {
   return this.http.patch(`http://localhost:3000/api/orders/update-status`, { orderId, status });
 }
+
+getTransactions(page: number, limit: number): Observable<any> {
+  let params = new HttpParams()
+    .set('page', page.toString())
+    .set('limit', limit.toString());
+
+  return this.http.get(`http://localhost:3000/api/transactions`, { params });
+}
+
 }

@@ -32,6 +32,7 @@ export class ProfileAccountComponent {
   id: any
   user: any;
   userId:any
+  passwordFieldType: string = 'password';
 
   // createForm() {
   //   this.profileForm = this.fb.group({
@@ -46,23 +47,17 @@ export class ProfileAccountComponent {
   ngOnInit() {
     this.profileForm = this.fb.group({
       name: ['', Validators.required],
-      username: ['', Validators.required],
+      contactNumber: ['', Validators.required],
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.required],
     })
     const userId = localStorage.getItem('user_id');
-    console.log(userId)
-    if (userId) {
-      this.usersService.getUserByIdService(userId)
-      .subscribe(data => {
-        this.userData1 = data
-        this.userData2 = this.userData1.data
-        console.log(this.userData2);
-      })
-    }
+ 
     this.getUserById(userId)
   }
-
+  togglePasswordVisibility(): void {
+    this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
+  }
 
   getUserById(id: any) {
     this.usersService.getUserByIdService(id)
@@ -70,10 +65,10 @@ export class ProfileAccountComponent {
         this.editData = data
       
         this.editArray = this.editData.data
-        console.log(this.editArray);
+   
         this.profileForm.patchValue({
           name: this.editData.data.name,
-          username: this.editData.data.username,
+          contactNumber: this.editData.data.contactNumber,
           email: this.editData.data.email,
           password: this.editData.data.password
         })
@@ -85,21 +80,26 @@ export class ProfileAccountComponent {
         // Assuming your API expects data in the format you're sending
         // If not, adjust this part accordingly
         name: this.profileForm.value.name,
-        username: this.profileForm.value.username,
+        contactNumber: this.profileForm.value.contactNumber,
         email: this.profileForm.value.email,
         password: this.profileForm.value.password
     };
     
     userId = this.editData.data._id; // Assuming you have user ID in editData
-    console.log(userId)
-    console.log(updatedUserData)
+    
     this.usersService.updateUserService(updatedUserData, userId)
-        .subscribe(updatedUser => {
-          alert("Update Successfully")
-            console.log('User updated:', updatedUser);
-            this.getUserById(userId)
-            // Optionally, you can reset the form or perform other actions upon successful update
-        });
+      .subscribe({
+        next: (updatedUser) => {
+        
+        alert("User updated successfully!")
+
+          this.getUserById(userId);
+        },
+        error: (err) => {
+          console.error('Error updating user:', err);
+        
+        }
+      });
 
 }
 
@@ -128,7 +128,6 @@ export class ProfileAccountComponent {
   showLogoutModal: boolean = false;
 
   performLogout() {
-    console.log('Performing logout...');
     this.showLogoutModal = false;
   }
 

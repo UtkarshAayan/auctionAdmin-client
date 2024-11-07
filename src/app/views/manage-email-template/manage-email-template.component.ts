@@ -105,7 +105,6 @@ export class ManageEmailTemplateComponent {
   deleteTemplate(id: string): void {
     this.emailTemplateService.deleteTemplate(id).subscribe({
       next: (data) => {
-        console.log('Template deleted', data);
         this.loadTemplates(); // Reload templates after deletion
       },
       error: (error) => {

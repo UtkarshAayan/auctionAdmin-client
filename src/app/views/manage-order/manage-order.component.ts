@@ -31,7 +31,6 @@ export class ManageOrderComponent {
   loadOrders(page: number, limit: number, status: string = ''): void {
     this.orderService.getAllOrders(page, limit, status).subscribe({
       next: (response) => {
-        console.log(response);
         this.orders = response.data.orders || []; // Ensure orders is always an array
         this.pagination = response.data.pagination || { currentPage: 1, totalPages: 1 }; // Ensure pagination has default values
       },
@@ -61,7 +60,6 @@ export class ManageOrderComponent {
       .subscribe(res => {
         this.dataArray = res
         this.dataArray = this.dataArray.data
-        console.log(this.dataArray);  
       })
   }
 

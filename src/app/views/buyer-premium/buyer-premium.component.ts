@@ -36,7 +36,6 @@ export class BuyerPremiumComponent {
         this.editData = data
       
         this.editArray = this.editData.data
-        console.log(this.editArray);
         this.settingsForm.patchValue({
           buyerPremium: this.editData.data.buyerPremium,
         })
