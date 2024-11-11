@@ -24,19 +24,19 @@ export class AutionProductService {
   }
 
   getAuctionByIdService(id:any){
-    return this.http.get(`http://localhost:3000/api/product/${id}`)
+    return this.http.get(`http://localhost:3001/api/product/${id}`)
   }
 
   verifyAuctionByAdminService(productId: any): Observable<any> {
-    const url = `http://localhost:3000/api/admin/verify-product/${productId}`;
+    const url = `http://localhost:3001/api/admin/verify-product/${productId}`;
     return this.http.post(url, {});
   }
 
   updateAuctionService(data: any, id: any) {
-    return this.http.put(`http://localhost:3000/api/product/${id}`, data)
+    return this.http.put(`http://localhost:3001/api/product/${id}`, data)
   }
   deleteAuctionService(id: any) {
-    return this.http.delete(`http://localhost:3000/api/product/${id}`)
+    return this.http.delete(`http://localhost:3001/api/product/${id}`)
   }
    
 

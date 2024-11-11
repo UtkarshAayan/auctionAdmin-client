@@ -53,18 +53,18 @@ export class UsersService {
     return this.http.get<any>(`${apiUrls.userServiceApi}subadmins`, { params });
   }
   updateUserService(data: any, id: any) {
-    return this.http.put(`http://localhost:3000/api/user/${id}`, data)
+    return this.http.put(`http://localhost:3001/api/user/${id}`, data)
   }
   deleteUserService(id: any) {
-    return this.http.delete(`http://localhost:3000/api/user/${id}`)
+    return this.http.delete(`http://localhost:3001/api/user/${id}`)
   }
    
   getUserByIdService(id:any){
-    return this.http.get(`http://localhost:3000/api/user/${id}`)
+    return this.http.get(`http://localhost:3001/api/user/${id}`)
   }
 
   verifyUserByAdminService(productId: any): Observable<any> {
-    const url = `http://localhost:3000/api/admin/verify/${productId}`;
+    const url = `http://localhost:3001/api/admin/verify/${productId}`;
     return this.http.put(url, {});
   }
 

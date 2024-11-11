@@ -16,11 +16,11 @@ export class ItemInventoryService {
   }
 
   deleteItemService(id: any) {
-    return this.http.delete(`http://localhost:3000/api/item/${id}`)
+    return this.http.delete(`http://localhost:3001/api/item/${id}`)
   }
    
   getItemByIdService(id:any){
-    return this.http.get(`http://localhost:3000/api/item/${id}`)
+    return this.http.get(`http://localhost:3001/api/item/${id}`)
   }
 
 }
