@@ -24,19 +24,19 @@ export class AutionProductService {
   }
 
   getAuctionByIdService(id:any){
-    return this.http.get(`http://88.222.212.120:3001/api/product/${id}`)
+    return this.http.get(`https://admin.menaauctions.com/api/product/${id}`)
   }
 
   verifyAuctionByAdminService(productId: any): Observable<any> {
-    const url = `http://88.222.212.120:3001/api/admin/verify-product/${productId}`;
+    const url = `https://admin.menaauctions.com/api/admin/verify-product/${productId}`;
     return this.http.post(url, {});
   }
 
   updateAuctionService(data: any, id: any) {
-    return this.http.put(`http://88.222.212.120:3001/api/product/${id}`, data)
+    return this.http.put(`https://admin.menaauctions.com/api/product/${id}`, data)
   }
   deleteAuctionService(id: any) {
-    return this.http.delete(`http://88.222.212.120:3001/api/product/${id}`)
+    return this.http.delete(`https://admin.menaauctions.com/api/product/${id}`)
   }
    
 
