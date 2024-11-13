@@ -53,18 +53,18 @@ export class UsersService {
     return this.http.get<any>(`${apiUrls.userServiceApi}subadmins`, { params });
   }
   updateUserService(data: any, id: any) {
-    return this.http.put(`http://88.222.212.120:3001/api/user/${id}`, data)
+    return this.http.put(`https://admin.menaauctions.com/api/user/${id}`, data)
   }
   deleteUserService(id: any) {
-    return this.http.delete(`http://88.222.212.120:3001/api/user/${id}`)
+    return this.http.delete(`https://admin.menaauctions.com/api/user/${id}`)
   }
    
   getUserByIdService(id:any){
-    return this.http.get(`http://88.222.212.120:3001/api/user/${id}`)
+    return this.http.get(`https://admin.menaauctions.com/api/user/${id}`)
   }
 
   verifyUserByAdminService(productId: any): Observable<any> {
-    const url = `http://88.222.212.120:3001/api/admin/verify/${productId}`;
+    const url = `https://admin.menaauctions.com/api/admin/verify/${productId}`;
     return this.http.put(url, {});
   }
 

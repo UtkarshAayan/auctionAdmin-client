@@ -10,7 +10,7 @@ export class OrderService {
   http = inject(HttpClient);
 
   getOrders(id: string): Observable<any>{
-    return this.http.get<any>(`http://88.222.212.120:3001/api/orders/${id}`);
+    return this.http.get<any>(`https://admin.menaauctions.com/api/orders/${id}`);
   }
 
 
@@ -22,16 +22,16 @@ export class OrderService {
       params = params.append('status', status);
     }
   
-    return this.http.get<any>(`http://88.222.212.120:3001/api/orders`, { params });
+    return this.http.get<any>(`https://admin.menaauctions.com/api/orders`, { params });
   }
   
   
 deleteOrder(id: string): Observable<any> {
-  return this.http.delete<any>(`http://88.222.212.120:3001/api/orders/${id}`);
+  return this.http.delete<any>(`https://admin.menaauctions.com/api/orders/${id}`);
 }
 
 updateOrderStatus(orderId: string, status: string): Observable<any> {
-  return this.http.patch(`http://88.222.212.120:3001/api/orders/update-status`, { orderId, status });
+  return this.http.patch(`https://admin.menaauctions.com/api/orders/update-status`, { orderId, status });
 }
 
 getTransactions(page: number, limit: number): Observable<any> {
@@ -39,7 +39,7 @@ getTransactions(page: number, limit: number): Observable<any> {
     .set('page', page.toString())
     .set('limit', limit.toString());
 
-  return this.http.get(`http://88.222.212.120:3001/api/transactions`, { params });
+  return this.http.get(`https://admin.menaauctions.com/api/transactions`, { params });
 }
 
 }
