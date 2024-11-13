@@ -83,11 +83,11 @@ $ npm update
 ### Basic usage
 
 ``` bash
-# dev server with hot reload at http://localhost:4200
+# dev server with hot reload at https://admin.menaauctions.com
 $ npm start
 ```
 
-Navigate to [http://localhost:4200](http://localhost:4200). The app will automatically reload if you change any of the source files.
+Navigate to [https://admin.menaauctions.com](https://admin.menaauctions.com). The app will automatically reload if you change any of the source files.
 
 #### Build
 
@@ -136,7 +136,7 @@ See [the Releases section of our project](https://github.com/coreui/coreui-free-
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for a dev server. Navigate to `https://admin.menaauctions.com/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 

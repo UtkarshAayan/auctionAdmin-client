@@ -68,7 +68,7 @@ deleteImage(imageUrl: string | undefined) {
     return;
   }
 
-  const relativePath = imageUrl.replace('http://localhost:3001/', ''); // Remove the base URL to get the relative path
+  const relativePath = imageUrl.replace('http://88.222.212.120:3001/', ''); // Remove the base URL to get the relative path
   if (relativePath) {
     if (confirm('Are you sure you want to delete this image?')) {
       this.adminSettingsService.deleteBannerImage(relativePath).subscribe(

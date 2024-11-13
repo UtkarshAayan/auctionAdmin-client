@@ -7,7 +7,7 @@ import { apiUrls } from '../api.urls'
   providedIn: 'root'
 })
 export class AdminSettingsService {
-  private apiUrl = 'http://localhost:3001/api/categories';
+  private apiUrl = 'http://88.222.212.120:3001/api/categories';
   constructor(private http: HttpClient) { }
 
   getSettings(): Observable<any> {
@@ -15,11 +15,11 @@ export class AdminSettingsService {
   }
 
   updateBuyersPremium(buyerPremium: any): Observable<any> {
-    return this.http.put(`http://localhost:3001/api/adminSettings/buyerPremium`, buyerPremium);
+    return this.http.put(`http://88.222.212.120:3001/api/adminSettings/buyerPremium`, buyerPremium);
   }
 
   updateSalesTax(saleTax: any): Observable<any> {
-    return this.http.put(`http://localhost:3001/api/adminSettings/saleTax`, saleTax);
+    return this.http.put(`http://88.222.212.120:3001/api/adminSettings/saleTax`, saleTax);
   }
   //Category
   createCategory(categoryData: FormData): Observable<any> {
@@ -72,56 +72,56 @@ export class AdminSettingsService {
 
   //HelpContent
   createHelpContent(helpContent: any): Observable<any> {
-    return this.http.post<any>(`http://localhost:3001/api/help/content`, helpContent);
+    return this.http.post<any>(`http://88.222.212.120:3001/api/help/content`, helpContent);
   }
   getAllHelpContents(): Observable<any> {
-    return this.http.get<any>(`http://localhost:3001/api/help/contents`);
+    return this.http.get<any>(`http://88.222.212.120:3001/api/help/contents`);
   }
 
   updateHelpContent(id: string, helpContent: any): Observable<any> {
-    return this.http.put<any>(`http://localhost:3001/api/help/content/${id}`, helpContent);
+    return this.http.put<any>(`http://88.222.212.120:3001/api/help/content/${id}`, helpContent);
   }
 
   deleteHelpContent(id: string): Observable<any> {
-    return this.http.delete<any>(`http://localhost:3001/api/help/content/${id}`);
+    return this.http.delete<any>(`http://88.222.212.120:3001/api/help/content/${id}`);
   }
   //howtosell
   createContentSell(data: any): Observable<any> {
-    return this.http.post(`http://localhost:3001/api/sell/how-to-sell`, data);
+    return this.http.post(`http://88.222.212.120:3001/api/sell/how-to-sell`, data);
   }
 
   getContentsSell(): Observable<any> {
-    return this.http.get<any>(`http://localhost:3001/api/sell/how-to-sell`);
+    return this.http.get<any>(`http://88.222.212.120:3001/api/sell/how-to-sell`);
   }
 
   updateContentSell(id: string, data: any): Observable<any> {
-    return this.http.put(`http://localhost:3001/api/sell/how-to-sell/${id}`, data);
+    return this.http.put(`http://88.222.212.120:3001/api/sell/how-to-sell/${id}`, data);
   }
 
   deleteContentSell(id: string): Observable<any> {
-    return this.http.delete(`http://localhost:3001/api/sell/how-to-sell/${id}`);
+    return this.http.delete(`http://88.222.212.120:3001/api/sell/how-to-sell/${id}`);
   }
   //howtobuy
   createContentBuy(data: any): Observable<any> {
-    return this.http.post(`http://localhost:3001/api/buy/how-to-buy`, data);
+    return this.http.post(`http://88.222.212.120:3001/api/buy/how-to-buy`, data);
   }
 
   getContentsBuy(): Observable<any> {
-    return this.http.get<any>(`http://localhost:3001/api/buy/how-to-buy`);
+    return this.http.get<any>(`http://88.222.212.120:3001/api/buy/how-to-buy`);
   }
 
   updateContentBuy(id: string, data: any): Observable<any> {
-    return this.http.put(`http://localhost:3001/api/buy/how-to-buy/${id}`, data);
+    return this.http.put(`http://88.222.212.120:3001/api/buy/how-to-buy/${id}`, data);
   }
 
   deleteContentBuy(id: string): Observable<any> {
-    return this.http.delete(`http://localhost:3001/api/buy/how-to-buy/${id}`);
+    return this.http.delete(`http://88.222.212.120:3001/api/buy/how-to-buy/${id}`);
   }
 
   //request
 
   // getRequest(): Observable<any> {
-  //   return this.http.get<any>(`http://localhost:3001/api/request/all`);
+  //   return this.http.get<any>(`http://88.222.212.120:3001/api/request/all`);
   // }
 
   getRequest(page: number, limit: number, status: string): Observable<any> {
@@ -133,103 +133,103 @@ export class AdminSettingsService {
       params = params.set('status', status);
     }
 
-    return this.http.get<any>(`http://localhost:3001/api/request/all`, { params });
+    return this.http.get<any>(`http://88.222.212.120:3001/api/request/all`, { params });
   }
   getRequestByIdService(id: any) {
-    return this.http.get(`http://localhost:3001/api/request/${id}`)
+    return this.http.get(`http://88.222.212.120:3001/api/request/${id}`)
   }
   deleteRequest(id: string): Observable<any> {
-    return this.http.delete(`http://localhost:3001/api/request/${id}`);
+    return this.http.delete(`http://88.222.212.120:3001/api/request/${id}`);
   }
 
   updateRequest(data: any, id: any) {
-    return this.http.patch(`http://localhost:3001/api/request/${id}/status`, data)
+    return this.http.patch(`http://88.222.212.120:3001/api/request/${id}/status`, data)
   }
 
   //termsandconditions
   createTerms(data: any): Observable<any> {
-    return this.http.post(`http://localhost:3001/api/terms/create`, data);
+    return this.http.post(`http://88.222.212.120:3001/api/terms/create`, data);
   }
 
   getTerms(): Observable<any> {
-    return this.http.get<any>(`http://localhost:3001/api/terms`);
+    return this.http.get<any>(`http://88.222.212.120:3001/api/terms`);
   }
 
   updateTerms(id: string, data: any): Observable<any> {
-    return this.http.put(`http://localhost:3001/api/terms/${id}`, data);
+    return this.http.put(`http://88.222.212.120:3001/api/terms/${id}`, data);
   }
 
   deleteTerms(id: string): Observable<any> {
-    return this.http.delete(`http://localhost:3001/api/terms/${id}`);
+    return this.http.delete(`http://88.222.212.120:3001/api/terms/${id}`);
   }
 //about
 
 //termsandconditions
 createAbout(data: any): Observable<any> {
-  return this.http.post(`http://localhost:3001/api/about/create`, data);
+  return this.http.post(`http://88.222.212.120:3001/api/about/create`, data);
 }
 
 getAbout(): Observable<any> {
-  return this.http.get<any>(`http://localhost:3001/api/about`);
+  return this.http.get<any>(`http://88.222.212.120:3001/api/about`);
 }
 
 updateAbout(id: string, data: any): Observable<any> {
-  return this.http.put(`http://localhost:3001/api/about/${id}`, data);
+  return this.http.put(`http://88.222.212.120:3001/api/about/${id}`, data);
 }
 
 deleteAbout(id: string): Observable<any> {
-  return this.http.delete(`http://localhost:3001/api/about/${id}`);
+  return this.http.delete(`http://88.222.212.120:3001/api/about/${id}`);
 }
 
   //privacypolicy
   createPrivacy(data: any): Observable<any> {
-    return this.http.post(`http://localhost:3001/api/privacy/create`, data);
+    return this.http.post(`http://88.222.212.120:3001/api/privacy/create`, data);
   }
 
   getPrivacy(): Observable<any> {
-    return this.http.get<any>(`http://localhost:3001/api/privacy`);
+    return this.http.get<any>(`http://88.222.212.120:3001/api/privacy`);
   }
 
   updatePrivacy(id: string, data: any): Observable<any> {
-    return this.http.put(`http://localhost:3001/api/privacy/${id}`, data);
+    return this.http.put(`http://88.222.212.120:3001/api/privacy/${id}`, data);
   }
 
   deletePrivacy(id: string): Observable<any> {
-    return this.http.delete(`http://localhost:3001/api/privacy/${id}`);
+    return this.http.delete(`http://88.222.212.120:3001/api/privacy/${id}`);
   }
 
   //create county
   createCountry(productData: any): Observable<any> {
-    return this.http.post<any>(`http://localhost:3001/api/country/create`, productData);
+    return this.http.post<any>(`http://88.222.212.120:3001/api/country/create`, productData);
   }
   //getcountrys
   getCountries(): Observable<any[]> {
-    return this.http.get<any[]>(`http://localhost:3001/api/country/all`);
+    return this.http.get<any[]>(`http://88.222.212.120:3001/api/country/all`);
   }
 
   getCountryById(id: any) {
-    return this.http.get(`http://localhost:3001/api/country/${id}`)
+    return this.http.get(`http://88.222.212.120:3001/api/country/${id}`)
   }
   updateCountry(id: string, data: any): Observable<any> {
-    return this.http.put(`http://localhost:3001/api/country/${id}`, data);
+    return this.http.put(`http://88.222.212.120:3001/api/country/${id}`, data);
   }
 
   deleteCountry(id: string): Observable<any> {
-    return this.http.delete(`http://localhost:3001/api/country/${id}`);
+    return this.http.delete(`http://88.222.212.120:3001/api/country/${id}`);
   }
 
 
   uploadBannerImages(formData: FormData) {
-    return this.http.post(`http://localhost:3001/api/banner/upload`, formData);
+    return this.http.post(`http://88.222.212.120:3001/api/banner/upload`, formData);
   }
 
   // Fetch Banner Images
   getBannerImages() {
-    return this.http.get<{ bannerImages: string[] }>(`http://localhost:3001/api/banner/view`);
+    return this.http.get<{ bannerImages: string[] }>(`http://88.222.212.120:3001/api/banner/view`);
   }
 
   // Delete a Banner Image
   deleteBannerImage(fileName: string) {
-    return this.http.delete(`http://localhost:3001/api/banner/delete/${encodeURIComponent(fileName)}`);
+    return this.http.delete(`http://88.222.212.120:3001/api/banner/delete/${encodeURIComponent(fileName)}`);
   }
 }
